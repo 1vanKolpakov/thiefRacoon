@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+
+/* Класс для анимации вращения */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.raccoon {
+  transition: transform 0.5s ease; /* Плавное вращение */
+}
+
+/* Класс для вращающегося енота во время загрузки */
+.raccoon-rotate {
+  animation: rotate 1s linear infinite; /* Вращение бесконечно с течением времени */
+}
+
+
+.raccoon {
+  transform: translateY(20deg);
+}
+
+.error {
+  border: 1px solid red;
+}
