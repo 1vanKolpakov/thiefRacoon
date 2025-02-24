@@ -10,11 +10,8 @@ function App() {
   const [loading, setLoading] = useState(false);  // Состояние для загрузки результата
   const [result, setResult] = useState([]);  // Состояние для результата распределения
   const [error, setError] = useState(''); // Состояние для ошибки мешка
-
-
   const inputRefs = useRef([]); 
 
-  
   // Функция для обновления количества шаров
   const handleBallChange = (index, value) => {
     const newBalls = [...balls];
@@ -30,7 +27,6 @@ function App() {
       inputRefs.current[balls.length].focus();
     }, 0);
   };
-
   
   // Функция для удаления последнего инпута
   const removeBallInput = () => {
@@ -53,12 +49,11 @@ function App() {
     
     // Имитация загрузки с задержкой
     setTimeout(() => {
-      const calculatedResult = stealBalls(capacity, balls);
+      const calculatedResult = stealBalls(Number(capacity), balls);
       setResult(calculatedResult);  // Устанавливаем результат
       setLoading(false);  // Отключаем загрузку
     }, 2000);  // 2 секунды задержки для имитации загрузки
   };
-
   return (
     <div className="App">
       <h1>Распределение шаров по мешку</h1>
@@ -82,7 +77,7 @@ function App() {
             <input
               type="number"
               value={ball}
-              onChange={(e) => handleBallChange(index, e.target.value)}
+              onChange={(e) => handleBallChange(index, Number(e.target.value))}
               ref={(el) => inputRefs.current[index] = el}
             />
           </div>
