@@ -15,7 +15,7 @@ function App() {
   // Функция для обновления количества шаров
   const handleBallChange = (index, value) => {
     const newBalls = [...balls];
-    newBalls[index] = value;
+    newBalls[index] = value === '' ? '' : Number(value);
     setBalls(newBalls);
   };
   
@@ -75,10 +75,20 @@ function App() {
           <div key={index}>
             <label>Цвет {index + 1}: </label>
             <input
-              type="number"
+            type="number"
               value={ball}
-              onChange={(e) => handleBallChange(index, Number(e.target.value))}
+              onChange={(e) => handleBallChange(index, e.target.value)}
               ref={(el) => inputRefs.current[index] = el}
+              onKeyDown={(e) => {
+                if (e.key === 'Tab' && index === balls.length - 1) {
+                  e.preventDefault(); 
+                  addBallInput(); 
+                }
+                if (e.key === 'Enter') {
+                  e.preventDefault(); 
+                  handleCalculate(); 
+                }
+              }}
             />
           </div>
         ))}
