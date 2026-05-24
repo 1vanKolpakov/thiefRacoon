@@ -57,7 +57,7 @@ function App() {
   return (
     <div className="App">
       <h1>Распределение шаров по мешку</h1>
-      <p>test of deploy</p>
+      <p>test subdomain deploy</p>
       <div>
         <label>Емкость мешка: </label>
         <input
